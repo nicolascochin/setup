@@ -30,4 +30,4 @@ echo "copy config files"
 for i in .gitconfig .p10k.zsh .tmux.conf .zshrc; do
   echo "Setting $i"
   curl https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i -o $i
-end
+done
