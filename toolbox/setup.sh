@@ -26,5 +26,12 @@ sudo dnf install -qy libpq-devel
 echo "install Heroku cli"
 curl -s https://cli-assets.heroku.com/install.sh | sh
 
+echo "install code extensions"
+for i in $(curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/toolbox/code_extensions.txt); do 
+  echo "Install $i..."
+  code --install-extension  $i
+done
+
+
 #echo "install netlify cli"
 #npm install netlify-cli -g
