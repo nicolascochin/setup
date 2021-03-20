@@ -119,8 +119,6 @@ alias less=prettybat
 #alias cat=prettybat
 alias update_fzf="cd ~/.fzf && git pull && ./install"
 alias vim=nvim
-alias start-docker="sudo systemctl start podman.socket"
-alias check-docker='sudo curl -H "Content-Type: application/json" --unix-socket /var/run/docker.sock http://localhost/_ping'
 alias vscode="toolbox run --container dev code"
 #alias code="flatpak run com.visualstudio.code"
 
