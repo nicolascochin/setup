@@ -13,12 +13,12 @@ echo "install nodenv"
 curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash
 git clone -q https://github.com/mattberther/zsh-nodenv ~/.oh-my-zsh/custom/plugins/zsh-nodenv
 
-echo "install vscode"
-sudo dnf -qy install libX11-devel
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-#sudo dnf check-update
-sudo dnf install -qy code
+#echo "install vscode"
+#sudo dnf -qy install libX11-devel
+#sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+#sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+##sudo dnf check-update
+#sudo dnf install -qy code
 
 echo "install lib PG"
 sudo dnf install -qy libpq-devel
@@ -37,11 +37,11 @@ sudo dnf -qy install openssh-server
 sudo /usr/libexec/openssh/sshd-keygen rsa
 sudo /usr/libexec/openssh/sshd-keygen ecdsa
 sudo /usr/libexec/openssh/sshd-keygen ed25519
-cat > /etc/ssh/sshd_config <<EOF
-Port 2222                 # Prevent conflicts with other SSH servers
-ListenAddress localhost   # Don’t allow remote connections
-PermitEmptyPasswords yes  # Containers lack passwords by default
-EOF
+sudo rm /etc/ssh/sshd_config
+sudo touch /etc/ssh/sshd_config
+echo "Port 2222                 # Prevent conflicts with other SSH servers" | sudo tee -a /etc/ssh/sshd_config
+echo "ListenAddress localhost   # Don’t allow remote connections" | sudo tee -a /etc/ssh/sshd_config
+echo "PermitEmptyPasswords yes  # Containers lack passwords by default" | sudo tee -a /etc/ssh/sshd_config
 
 echo "Add this line to the zshrc" 
 echo "toolbox run -c dev sudo /usr/sbin/sshd"
