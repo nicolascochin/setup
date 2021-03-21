@@ -10,24 +10,15 @@ curl -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20
 echo "Setup gnome terminal to use the new font"
 read
 echo "install powerlevel10k"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 echo "install syntax highlighted"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-echo "install oh my zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo "Download fonts (https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k) into ~/.local/share/fonts"
-read
-echo "Setup gnome terminal to use the new font"
-read
-echo "install powerlevel10k"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-echo "install syntax highlighted"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-echo "install fzf"
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 echo "copy config files"
 for i in .gitconfig .p10k.zsh .tmux.conf .zshrc; do
   echo "Setting $i"
-  curl https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i -o $i
+  curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i -o $i
 done
+echo "install fzf"
+git clone -q --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
