@@ -26,12 +26,30 @@ sudo dnf install -qy libpq-devel
 echo "install Heroku cli"
 curl -s https://cli-assets.heroku.com/install.sh | sh
 
-echo "install code extensions"
-for i in $(curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/toolbox/code_extensions.txt); do 
-  echo "Install $i..."
-  code --install-extension  $i
-done
+#echo "install code extensions"
+#for i in $(curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/toolbox/code_extensions.txt); do 
+#  echo "Install $i..."
+#  code --install-extension  $i
+#done
 
+echo "Setup ssh server"
+sudo dnf -qy install openssh-server
+sudo /usr/libexec/openssh/sshd-keygen rsa
+sudo /usr/libexec/openssh/sshd-keygen ecdsa
+sudo /usr/libexec/openssh/sshd-keygen ed25519
+cat > /etc/ssh/sshd_config <<EOF
+Port 2222                 # Prevent conflicts with other SSH servers
+ListenAddress localhost   # Don’t allow remote connections
+PermitEmptyPasswords yes  # Containers lack passwords by default
+EOF
 
+echo "Add this line to the zshrc" 
+echo "toolbox run -c dev sudo /usr/sbin/sshd"
+echo
+echo "Add the following lines to ~/.ssh/config"
+echo
+echo "Host toolbox"
+echo "    HostName localhost"
+echo "    Port 2222"
 #echo "install netlify cli"
 #npm install netlify-cli -g
