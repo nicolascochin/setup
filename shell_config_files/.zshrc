@@ -78,7 +78,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting MUST BE THE LAST ONE
-plugins=(git colorize rbenv bundler fzf common-aliases zsh_reload  zsh-syntax-highlighting)
+plugins=(git colorize rbenv zsh-nodenv bundler fzf common-aliases zsh_reload  zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,8 +119,8 @@ alias less=prettybat
 #alias cat=prettybat
 alias update_fzf="cd ~/.fzf && git pull && ./install"
 alias vim=nvim
-alias vscode="toolbox run --container dev code"
-#alias code="flatpak run com.visualstudio.code"
+#alias vscode="toolbox run --container dev code"
+alias code="flatpak run com.visualstudio.code"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
