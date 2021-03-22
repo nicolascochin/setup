@@ -88,9 +88,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TERM=xterm
 
 
-# DEV 
-#export BUNDLE_PATH=vendor/bundle
-
 #export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -103,6 +100,14 @@ export TERM=xterm
 # else
 #   export EDITOR='mvim'
 # fi
+
+if [[ $(hostname) == 'toolbox' ]]; then 
+  alias podman="flatpak-spawn --host podman"
+  alias code="flatpak-spawn --host flatpak run com.visualstudio.code"
+else 
+  alias vim=nvim
+  alias code="flatpak run com.visualstudio.code"
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -118,9 +123,9 @@ export TERM=xterm
 alias less=prettybat
 #alias cat=prettybat
 alias update_fzf="cd ~/.fzf && git pull && ./install"
-alias vim=nvim
-#alias vscode="toolbox run --container dev code"
-alias code="flatpak run com.visualstudio.code"
+#alias vim=nvim
+
+alias start-dev="toolbox run -c dev sudo /usr/sbin/sshd"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
