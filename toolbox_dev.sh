@@ -8,7 +8,7 @@ do true; done
 while
   echo -n "Please enter the Toolbox name "
   read TOOLBOX_NAME
-  ! echo ${TOOLBOX_NAME} | egrep -q "^[a-zA-Z]+$"
+  ! echo ${TOOLBOX_NAME} | egrep -q "^[a-zA-Z_-]+$"
 do true; done
 
 echo
