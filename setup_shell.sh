@@ -17,7 +17,7 @@ sh -c 'curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug
 echo "copy config files"
 for i in .gitconfig .p10k.zsh .tmux.conf .zshrc .config/nvim/general.vim .config/nvim/init.vim .config/nvim/plug.vim .config/nvim/theme.vim .config/nvim/plugins/fzf.vim .config/nvim/plugins/lightline.vim .config/nvim/plugins/nerdtree.vim; do
   echo "Setting $i"
-  curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i -o $i
+  curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i --create-dirs -o $i
 done
 echo "install fzf"
 git clone -q --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
