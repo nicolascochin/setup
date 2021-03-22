@@ -7,8 +7,6 @@ curl -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20
 curl -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -o "${FONT_DIR}/MesloLGS NF Bold.ttf"
 curl -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf  -o "${FONT_DIR}/MesloLGS NF Italic.ttf"
 curl -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf o "${FONT_DIR}/MesloLGS NF Bold Italic.ttf"
-echo "Setup gnome terminal to use the new font"
-read
 echo "install powerlevel10k"
 git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 echo "install syntax highlighted"
