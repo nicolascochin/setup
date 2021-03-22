@@ -5,6 +5,11 @@ while
   read SSH_PORT
   ! echo ${SSH_PORT} | egrep -q "^[0-9]+$"
 do true; done
+while
+  echo -n "Please enter the Toolbox name "
+  read TOOLBOX_NAME
+  ! echo ${TOOLBOX_NAME} | egrep -q "^[a-zA-Z]+$"
+do true; done
 
 echo
 echo "Setup a dev toolbox"
@@ -37,11 +42,16 @@ echo "Port ${SSH_PORT}          # Prevent conflicts with other SSH servers" | su
 echo "ListenAddress localhost   # Don’t allow remote connections" | sudo tee -a /etc/ssh/sshd_config
 echo "PermitEmptyPasswords yes  # Containers lack passwords by default" | sudo tee -a /etc/ssh/sshd_config
 
+if [ ! -d ~/.ssh ]; then 
+  mkdir ~/.ssh
+fi
+touch ~/.ssh/config
+
 echo "Add this line to the zshrc"
-echo "toolbox run -c dev sudo /usr/sbin/sshd"
+echo "alias start-${TOOLBOX_NAME}=\"toolbox run -c TOOLBOX_NAME sudo /usr/sbin/sshd\""
 echo
 echo "Add the following lines to ~/.ssh/config"
 echo
-echo "Host toolbox"
+echo "Host toolbox-${TOOLBOX_NAME}"
 echo "    HostName localhost"
 echo "    Port ${SSH_PORT}"
