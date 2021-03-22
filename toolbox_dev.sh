@@ -38,7 +38,7 @@ sudo /usr/libexec/openssh/sshd-keygen ecdsa
 sudo /usr/libexec/openssh/sshd-keygen ed25519
 sudo rm /etc/ssh/sshd_config
 sudo touch /etc/ssh/sshd_config
-sudo tee -a /etc/ssh/sshd_config <<EOF
+sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
 Port ${SSH_PORT}          # Prevent conflicts with other SSH servers
 ListenAddress localhost   # Don’t allow remote connections
 PermitEmptyPasswords yes  # Containers lack passwords by default
@@ -48,11 +48,11 @@ if [ ! -d ~/.ssh ]; then
   mkdir ~/.ssh
 fi
 touch ~/.ssh/config
-tee -a ~/.ssh/config <<EOF
+tee -a ~/.ssh/config > /dev/null <<EOF
 Host toolbox-${TOOLBOX_NAME}
     HostName localhost
     Port ${SSH_PORT}
 EOF
 echo
 echo "Add this line to the zshrc"
-echo "alias start-${TOOLBOX_NAME}=\"toolbox run -c TOOLBOX_NAME sudo /usr/sbin/sshd\""
+echo "alias start-${TOOLBOX_NAME}=\"toolbox run -c ${TOOLBOX_NAME} sudo /usr/sbin/sshd\""
