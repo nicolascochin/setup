@@ -13,8 +13,8 @@ do true; done
 
 echo
 echo "Setup a dev toolbox"
-echo "install ZSH"
-sudo dnf install -qy zsh
+echo "install ZSH & bat"
+sudo dnf install -qy zsh bat
 echo "install development Tools"
 sudo dnf groupinstall -qy "Development Tools"
 echo "install zlib & openssl lib"
