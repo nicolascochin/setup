@@ -13,5 +13,5 @@ toolbox enter dev
 ```
 ### Setup
 ```shell
-curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/toolbox_dev.sh | sh
+sh <(curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/toolbox_dev.sh)
 ```
