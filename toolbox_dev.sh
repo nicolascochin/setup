@@ -13,17 +13,17 @@ do true; done
 
 echo
 echo "Setup a dev toolbox"
-echo "install ZSH & bat"
-sudo dnf install -qy zsh bat
+echo "install ZSH & bat & perl (for crenv)"
+sudo dnf install -qy zsh bat perl
 echo "install development Tools"
 sudo dnf groupinstall -qy "Development Tools"
 echo "install zlib & openssl lib"
 sudo dnf install -qy zlib-devel openssl-devel
-echo "install rbenv"
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-echo "install nodenv"
-curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash
-git clone -q https://github.com/mattberther/zsh-nodenv ~/.oh-my-zsh/custom/plugins/zsh-nodenv
+#echo "install rbenv"
+#curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+#echo "install nodenv"
+#curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash
+#git clone -q https://github.com/mattberther/zsh-nodenv ~/.oh-my-zsh/custom/plugins/zsh-nodenv
 
 echo "install lib PG"
 sudo dnf install -qy libpq-devel
