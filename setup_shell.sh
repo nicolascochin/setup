@@ -1,7 +1,7 @@
 echo "install oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo "Install nodenv plugin"
-git clone https://github.com/mattberther/zsh-nodenv ~/.oh-my-zsh/custom/plugins/zsh-nodenv
+#echo "Install nodenv plugin"
+#git clone https://github.com/mattberther/zsh-nodenv ~/.oh-my-zsh/custom/plugins/zsh-nodenv
 echo "Download fonts (https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k) into ~/.local/share/fonts"
 FONT_DIR=~/.local/share/fonts 
 mkdir -p $FONT_DIR
@@ -13,6 +13,16 @@ echo "install powerlevel10k"
 git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 echo "install syntax highlighted"
 git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+echo "install anyenv"
+git clone https://github.com/anyenv/anyenv ~/.anyenv
+source ~/.zshrc
+anyenv install --force-init
+echo "install rbenv"
+anyenv install rbenv 
+echo "install nodenv"
+anyenv install nodenv
+echo "install crenv"
+anyenv install crenv 
 echo "Setup nvim"
 sh -c 'curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
