@@ -78,7 +78,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting MUST BE THE LAST ONE
-plugins=(git colorize rbenv zsh-nodenv bundler fzf common-aliases zsh_reload  zsh-syntax-highlighting)
+plugins=(git colorize bundler fzf common-aliases zsh_reload  zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,3 +132,8 @@ alias start-dev="toolbox run -c dev sudo /usr/sbin/sshd"
 
 # To customize prompt, run `p10k configure` or edit /var/home/nico/.p10k.zsh.
 [[ ! -f /var/home/nico/.p10k.zsh ]] || source /var/home/nico/.p10k.zsh
+
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
