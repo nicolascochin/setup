@@ -1,7 +1,8 @@
 echo "install oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#echo "Install nodenv plugin"
-#git clone https://github.com/mattberther/zsh-nodenv ~/.oh-my-zsh/custom/plugins/zsh-nodenv
+echo "install anyenv"
+git clone https://github.com/anyenv/anyenv ~/.anyenv
+~/.anyenv/bin/anyenv install --force-init
 echo "Download fonts (https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k) into ~/.local/share/fonts"
 FONT_DIR=~/.local/share/fonts 
 mkdir -p $FONT_DIR
@@ -21,10 +22,6 @@ for i in .gitconfig .p10k.zsh .tmux.conf .zshrc .config/nvim/general.vim .config
   echo "Setting $i"
   curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i --create-dirs -o $i
 done
-echo "install anyenv"
-git clone https://github.com/anyenv/anyenv ~/.anyenv
-source ~/.zshrc
-anyenv install --force-init
 echo "install fzf"
 git clone -q --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
