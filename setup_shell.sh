@@ -21,10 +21,10 @@ for i in .gitconfig .p10k.zsh .tmux.conf .zshrc .config/nvim/general.vim .config
   echo "Setting $i"
   curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i --create-dirs -o $i
 done
-echo "install fzf"
-git clone -q --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
 echo "install anyenv"
 git clone https://github.com/anyenv/anyenv ~/.anyenv
 source ~/.zshrc
 anyenv install --force-init
+echo "install fzf"
+git clone -q --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
