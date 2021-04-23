@@ -1,5 +1,8 @@
 #/bin/bash
 
+echo -n "Actual ssh config"
+cat ~/.ssh/config | grep -v -e '^$'
+echo 
 while
   echo -n "Please enter the SSH port to setup "
   read SSH_PORT
