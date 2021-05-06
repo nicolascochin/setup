@@ -22,6 +22,8 @@ echo "install development Tools"
 sudo dnf groupinstall -qy "Development Tools"
 echo "install zlib & openssl lib"
 sudo dnf install -qy zlib-devel openssl-devel
+echo "install locales"
+sudo dnf install glibc-langpack-fr glibc-langpack-en
 #echo "install rbenv"
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 #echo "install nodenv"
