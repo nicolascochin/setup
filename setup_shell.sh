@@ -29,6 +29,7 @@ for i in .gitconfig .p10k.zsh .tmux.conf .zshrc .config/nvim/general.vim .config
   curl -s https://raw.githubusercontent.com/nicolascochin/setup/main/shell_config_files/$i --create-dirs -o $i
 done
 echo "install cheat.sh"
+mkdir -p ~/.local/bin
 curl https://cht.sh/:cht.sh > ~/.local/bin/cht.sh
 chmod +x ~/.local/bin/cht.sh
 echo "install fzf"
