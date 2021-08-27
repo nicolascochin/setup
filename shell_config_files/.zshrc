@@ -9,7 +9,7 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/var/home/nico/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -131,7 +131,7 @@ alias start-dev="toolbox run -c dev sudo /usr/sbin/sshd"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # To customize prompt, run `p10k configure` or edit /var/home/nico/.p10k.zsh.
-[[ ! -f /var/home/nico/.p10k.zsh ]] || source /var/home/nico/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
